@@ -1,0 +1,51 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<polymer-element name="yo-mine" attributes="panels">
+
+  <template>
+    
+    <core-toolbar class="tall">
+      <core-icon-button icon="menu"></core-icon-button>
+      <div>Polymer Rocks!</div>
+    </core-toolbar>
+
+    <i>Static italic text and </i>{{dynamicText}}
+    <div>{{commonText}}</div>
+
+    <content select='#v1'></content>
+    <content select='#v2'></content>
+    <content select='.v3'></content>
+    <content select='*'>
+      Remaining content
+    </content>
+    <!-- <template repeat='{{ panel in panels }}'>
+      <li>{{panel}}</li>
+    </template> -->
+
+    <div horizontal layout>
+      <div flex>One</div>
+      <div flex>Two</div>
+      <div flex>Three</div>
+    </div>
+    <paper-button>flat button</paper-button>
+    <paper-button raised>raised button</paper-button>
+
+    <br/><br/>
+  
+
+    <!-- <paper-button raised>
+      <core-icon icon="favorite"></core-icon>
+      custom button
+    </paper-button> -->
+    
+  </template>
+
+  <script src='scope-test.js'></script>
+  <!--<script src='yo-mine.js'></script>-->
+</polymer-element>
