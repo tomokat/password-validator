@@ -158,7 +158,15 @@ module.exports = function (grunt) {
       }
     },
     clean: {
-      dist: ['.tmp', '<%= yeoman.dist %>/*'],
+      dist: [
+        '.tmp', 
+        '<%= yeoman.dist %>/*',
+        '!<%= yeoman.dist %>/.git*',
+        '!<%= yeoman.dist %>/Procfile',
+        '!<%= yeoman.dist %>/package.json',
+        '!<%= yeoman.dist %>/web.js',
+        '!<%= yeoman.dist %>/node_modules'
+      ],
       server: '.tmp'
     },
     jshint: {
@@ -272,6 +280,20 @@ module.exports = function (grunt) {
           threshold: 80
         }
       }
+    },
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: 'true',
+        push: 'true',
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      heroku: {
+        options: {
+          remote: 'git@heroku.com:password-validator.git',
+          branch: 'master'
+        }
+      }
     }
   });
 
@@ -319,5 +341,9 @@ module.exports = function (grunt) {
     'jshint',
     // 'test'
     'build'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'buildcontrol'
   ]);
 };
